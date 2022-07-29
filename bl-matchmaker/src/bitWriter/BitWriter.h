@@ -38,22 +38,7 @@ public:
 	bool write_bit (bool value);
 	bool write_flag (bool flag);
 
-	bool write_bits (U32 bit_count, const void *bit_ptr)
-	{
-		if (curr_bit + bit_count > num_bits || data == nullptr)
-		{
-			return false;
-		}
-
-		U8 *ptr = (U8 *) bit_ptr;
-
-		for (U32 n = 0; n < bit_count; n++)
-		{
-			_write_bit ((ptr[curr_bit >> 3] >> (n & 7)) & 1U);
-		}
-
-		return true;
-	}
+	bool write_bits (U32 bit_count, const void *bit_ptr);
 
 	bool write_int (U8 num, S32 bit_count = sizeof (U8) << 3);
 	bool write_int (U16 num, S32 bit_count = sizeof (U16) << 3);

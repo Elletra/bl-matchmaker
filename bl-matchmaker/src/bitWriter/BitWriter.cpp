@@ -53,6 +53,23 @@ bool BitWriter::write_flag (bool flag)
 	return flag;
 }
 
+bool BitWriter::write_bits (U32 bit_count, const void *bit_ptr)
+{
+	if (curr_bit + bit_count > num_bits || data == nullptr)
+	{
+		return false;
+	}
+
+	U8 *ptr = (U8 *) bit_ptr;
+
+	for (U32 n = 0; n < bit_count; n++)
+	{
+		_write_bit ((ptr[curr_bit >> 3] >> (n & 7)) & 1U);
+	}
+
+	return true;
+}
+
 /* write_int() overloads */
 
 bool BitWriter::write_int (U8 num, S32 bit_count)

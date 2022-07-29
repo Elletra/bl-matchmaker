@@ -40,6 +40,27 @@ bool BitReader::read_flag ()
 	return read_bit (flag) && flag;
 }
 
+bool BitReader::read_bits (S32 bit_count, void *out_ptr)
+{
+	if (curr_bit + bit_count > num_bits || data == nullptr)
+	{
+		return false;
+	}
+
+	U8 *ptr = (U8 *) out_ptr;
+
+	for (S32 n = 0; n < bit_count; n++)
+	{
+		U8 byte = n >> 3;
+
+		ptr[byte] = (ptr[byte] << 1) | _read_bit ();
+	}
+
+	out_ptr = ptr;
+
+	return true;
+}
+
 bool BitReader::read (U8 &out)
 {
 	return _read<U8> (out);

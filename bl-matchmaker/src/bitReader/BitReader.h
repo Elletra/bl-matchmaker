@@ -37,6 +37,8 @@ public:
 	bool read_bit (U8 &out_value);
 	bool read_flag ();
 
+	bool read_bits (S32 bit_count, void *out_ptr);
+
 	bool read (U8 &out);
 	bool read (U16 &out);
 	bool read (U32 &out);

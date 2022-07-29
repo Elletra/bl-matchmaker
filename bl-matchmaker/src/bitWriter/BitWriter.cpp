@@ -45,12 +45,7 @@ bool BitWriter::write_bit (bool value)
 
 bool BitWriter::write_flag (bool flag)
 {
-	if (!write_bit (flag))
-	{
-		return false;
-	}
-
-	return flag;
+	return write_bit (flag) && flag;
 }
 
 bool BitWriter::write_bits (U32 bit_count, const void *bit_ptr)

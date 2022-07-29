@@ -27,6 +27,7 @@
     <ClInclude Include="src\bitReader\BitReader.h" />
     <ClInclude Include="src\bitWriter\BitWriter.h" />
     <ClInclude Include="src\types.h" />
+    <ClInclude Include="src\util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

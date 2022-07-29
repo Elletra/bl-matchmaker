@@ -1,5 +1,7 @@
 #include "BitReader.h"
 
+#include "util.h"
+
 // -----------------------------------------------------------------------------
 
 BitReader::BitReader (U8 *data, size_t data_size, bool auto_free_data)

@@ -37,25 +37,32 @@ public:
 
 	bool write_bit (bool value);
 	bool write_flag (bool flag);
-	//bool write_string (char buffer[256]);
 
-	template<typename T>
-	bool write (T value)
+	bool write_bits (U32 bit_count, const void *bit_ptr)
 	{
-		size_t size = sizeof (T) * 8;
-
-		if (curr_bit + size > num_bits || data == nullptr)
+		if (curr_bit + bit_count > num_bits || data == nullptr)
 		{
 			return false;
 		}
 
-		for (size_t n = size - 1; n >= 0; n--)
+		U8 *ptr = (U8 *) bit_ptr;
+
+		for (U32 n = 0; n < bit_count; n++)
 		{
-			_write_bit ((value >> n) & 1U);
+			_write_bit ((ptr[curr_bit >> 3] >> (n & 7)) & 1U);
 		}
 
 		return true;
 	}
+
+	bool write_int (U8 num, S32 bit_count = sizeof (U8) << 3);
+	bool write_int (U16 num, S32 bit_count = sizeof (U16) << 3);
+	bool write_int (U32 num, S32 bit_count = sizeof (U32) << 3);
+	bool write_int (S8 num, S32 bit_count = sizeof (S8) << 3);
+	bool write_int (S16 num, S32 bit_count = sizeof (S16) << 3);
+	bool write_int (S32 num, S32 bit_count = sizeof (S32) << 3);
+
+	//bool write_string (char buffer[256]);
 
 private:
 	/// Dangerous method with no sanity checks!!

@@ -53,6 +53,40 @@ bool BitWriter::write_flag (bool flag)
 	return flag;
 }
 
+/* write_int() overloads */
+
+bool BitWriter::write_int (U8 num, S32 bit_count)
+{
+	return write_bits (bit_count, &num);
+}
+
+bool BitWriter::write_int (U16 num, S32 bit_count)
+{
+	return write_bits (bit_count, &num);
+}
+
+bool BitWriter::write_int (U32 num, S32 bit_count)
+{
+	return write_bits (bit_count, &num);
+}
+
+bool BitWriter::write_int (S8 num, S32 bit_count)
+{
+	return write_bits (bit_count, &num);
+}
+
+bool BitWriter::write_int (S16 num, S32 bit_count)
+{
+	return write_bits (bit_count, &num);
+}
+
+bool BitWriter::write_int (S32 num, S32 bit_count)
+{
+	return write_bits (bit_count, &num);
+}
+
+// -----------------------------------------------------------------------------
+
 /// Dangerous method with no sanity checks!!
 ///
 /// This method assumes you have already done the appropriate sanity checking.

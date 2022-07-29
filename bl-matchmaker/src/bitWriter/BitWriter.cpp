@@ -1,0 +1,73 @@
+#include <memory.h>
+#include <stdlib.h>
+
+#include "BitWriter.h"
+
+BitWriter::BitWriter (size_t data_size, bool auto_free_data)
+	: data_size (data_size),
+	auto_free_data (auto_free_data)
+{
+	data = nullptr;
+	num_bits = data_size * 8;
+	curr_bit = 0;
+
+	if (data_size > 0)
+	{
+		data = (U8 *) malloc (sizeof (U8) * data_size);
+
+		if (data)
+		{
+			memset (data, 0, sizeof (U8) * data_size);
+		}
+	}
+}
+
+BitWriter::~BitWriter ()
+{
+	if (data && auto_free_data)
+	{
+		free (data);
+		data = nullptr;
+	}
+}
+
+bool BitWriter::write_bit (bool value)
+{
+	if (curr_bit >= num_bits || data == nullptr)
+	{
+		return false;
+	}
+
+	_write_bit (value);
+
+	return true;
+}
+
+bool BitWriter::write_flag (bool flag)
+{
+	if (!write_bit (flag))
+	{
+		return false;
+	}
+
+	return flag;
+}
+
+/// Dangerous method with no sanity checks!!
+///
+/// This method assumes you have already done the appropriate sanity checking.
+void BitWriter::_write_bit (bool value)
+{
+	U8 n = (curr_bit & 7);
+
+	if (value)
+	{
+		data[curr_bit >> 3] |= 1U << n;
+	}
+	else
+	{
+		data[curr_bit >> 3] &= ~(1U << n);
+	}
+
+	curr_bit++;
+}

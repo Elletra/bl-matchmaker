@@ -101,7 +101,7 @@ bool BitWriter::write_int (S32 num, S32 bit_count)
 
 /// Dangerous method with no sanity checks!!
 ///
-/// This method assumes you have already done the appropriate sanity checking.
+/// This method assumes you have already done the appropriate sanity checking with `curr_bit`.
 void BitWriter::_write_bit (bool value)
 {
 	U8 n = curr_bit & 7;

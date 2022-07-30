@@ -52,7 +52,7 @@ public:
 private:
 	/// Dangerous method with no sanity checks!!
 	///
-	/// This method assumes you have already done the appropriate sanity checking.
+	/// This method assumes you have already done the appropriate sanity checking with `curr_bit`.
 	inline void _write_bit (bool value);
 };
 

@@ -117,7 +117,7 @@ void BitReader::read_string (char buffer[256])
 
 /// Dangerous method with no sanity checks!!
 ///
-/// This method assumes you have already done the appropriate sanity checking.
+/// This method assumes you have already done the appropriate sanity checking with `curr_bit`.
 inline U8 BitReader::_read_bit ()
 {
 	size_t byte = curr_bit >> 3;

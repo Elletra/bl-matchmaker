@@ -40,7 +40,7 @@ bool BitReader::read_flag ()
 	return read_bit (flag) && flag;
 }
 
-bool BitReader::read_bits (S32 bit_count, void *out_ptr)
+bool BitReader::read_bits (U32 bit_count, void *out_ptr)
 {
 	if (curr_bit + bit_count > num_bits || data == nullptr)
 	{
@@ -62,62 +62,41 @@ bool BitReader::read_bits (S32 bit_count, void *out_ptr)
 	return true;
 }
 
-bool BitReader::read (U8 &out)
+S32 BitReader::read_int (U8 bit_count)
 {
-	return read_bits (BITS_U8, &out);
+	S32 num = 0;
+	read_bits (bit_count, &num);
+	return num;
 }
 
-bool BitReader::read (U16 &out)
+U8 BitReader::read_u8 (U8 bit_count)
 {
-	bool success = read_bits (BITS_U16, &out);
-
-	if (success)
-	{
-		out = to_le (out);
-	}
-
-	return success;
+	return read_int (bit_count);
 }
 
-bool BitReader::read (U32 &out)
+U16 BitReader::read_u16 (U8 bit_count)
 {
-	bool success = read_bits (BITS_U32, &out);
-
-	if (success)
-	{
-		out = to_le (out);
-	}
-
-	return success;
+	return read_int (bit_count);
 }
 
-bool BitReader::read (S8 &out)
+U32 BitReader::read_u32 (U8 bit_count)
 {
-	return read_bits (BITS_S8, &out);
+	return read_int (bit_count);
 }
 
-bool BitReader::read (S16 &out)
+S8 BitReader::read_s8 (U8 bit_count)
 {
-	bool success = read_bits (BITS_S16, &out);
-
-	if (success)
-	{
-		out = to_le (out);
-	}
-
-	return success;
+	return read_int (bit_count);
 }
 
-bool BitReader::read (S32 &out)
+S16 BitReader::read_s16 (U8 bit_count)
 {
-	bool success = read_bits (BITS_S32, &out);
+	return read_int (bit_count);
+}
 
-	if (success)
-	{
-		out = to_le (out);
-	}
-
-	return success;
+S32 BitReader::read_s32 (U8 bit_count)
+{
+	return read_int (bit_count);
 }
 
 void BitReader::read_string (char buffer[256])

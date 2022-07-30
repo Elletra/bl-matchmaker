@@ -37,14 +37,15 @@ public:
 	bool read_bit (U8 &out_value);
 	bool read_flag ();
 
-	bool read_bits (S32 bit_count, void *out_ptr);
+	bool read_bits (U32 bit_count, void *out_ptr);
+	S32 read_int (U8 bit_count);
 
-	bool read (U8 &out);
-	bool read (U16 &out);
-	bool read (U32 &out);
-	bool read (S8 &out);
-	bool read (S16 &out);
-	bool read (S32 &out);
+	U8 read_u8 (U8 bit_count = BITS_U8);
+	U16 read_u16 (U8 bit_count = BITS_U16);
+	U32 read_u32 (U8 bit_count = BITS_U32);
+	S8 read_s8 (U8 bit_count = BITS_S8);
+	S16 read_s16 (U8 bit_count = BITS_S16);
+	S32 read_s32 (U8 bit_count = BITS_S32);
 
 	void read_string (char buffer[256]);
 

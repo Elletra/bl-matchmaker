@@ -49,7 +49,7 @@ bool BitReader::read_bits (U32 bit_count, void *out_ptr)
 
 	U8 *ptr = (U8 *) out_ptr;
 
-	for (S32 n = 0; n < bit_count; n++)
+	for (U32 n = 0; n < bit_count; n++)
 	{
 		if (_read_bit ())
 		{

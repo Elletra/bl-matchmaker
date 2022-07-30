@@ -3,6 +3,15 @@
 
 #include "BitWriter.h"
 
+BitWriter::BitWriter (void *data, size_t data_size)
+	: data ((U8 *) data),
+	data_size (data_size)
+{
+	auto_free_data = false;
+	num_bits = data_size * 8;
+	curr_bit = 0;
+}
+
 BitWriter::BitWriter (size_t data_size, bool auto_free_data)
 	: data_size (data_size),
 	auto_free_data (auto_free_data)

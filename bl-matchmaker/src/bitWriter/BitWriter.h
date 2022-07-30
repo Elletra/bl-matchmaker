@@ -17,21 +17,37 @@ private:
 	bool auto_free_data;
 
 public:
+	BitWriter (void *data, size_t data_size);
 	BitWriter (size_t data_size, bool auto_free_data = true);
 	BitWriter () : BitWriter (0, false) {}
 	~BitWriter ();
 
 	inline size_t get_num_bits () const { return num_bits; }
-	inline size_t get_curr_bit () const { return curr_bit; }
+	inline size_t get_bit_pos () const { return curr_bit; }
 	inline size_t get_data_size () const { return data_size; }
 
 	inline U8 *get_data_buffer () { return data; }
 
 	inline void reset () { curr_bit = 0; }
 
-	inline void set_data_buffer (U8 *buffer)
+	inline void set_bit_pos (size_t bit_pos)
+	{
+		if (bit_pos < num_bits)
+		{
+			curr_bit = bit_pos;
+		}
+		else if (num_bits > 0)
+		{
+			curr_bit = num_bits - 1;
+		}
+	}
+
+	inline void set_data_buffer (U8 *buffer, size_t size)
 	{
 		data = buffer;
+		data_size = size;
+		num_bits = data_size * 8;
+
 		reset ();
 	}
 

@@ -22,7 +22,7 @@ public:
 	~BitReader ();
 
 	inline size_t get_num_bits () const { return num_bits; }
-	inline size_t get_curr_bit () const { return curr_bit; }
+	inline size_t get_bit_pos () const { return curr_bit; }
 	inline size_t get_data_size () const { return data_size; }
 	inline U8 *get_data_buffer () { return data; }
 

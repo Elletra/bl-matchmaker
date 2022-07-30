@@ -59,7 +59,7 @@ bool BitWriter::write_bits (U32 bit_count, const void *bit_ptr)
 
 	for (U32 n = 0; n < bit_count; n++)
 	{
-		_write_bit ((ptr[curr_bit >> 3] >> (n & 7)) & 1U);
+		_write_bit ((ptr[n >> 3] >> (n & 7)) & 1U);
 	}
 
 	return true;
@@ -104,7 +104,7 @@ bool BitWriter::write_int (S32 num, S32 bit_count)
 /// This method assumes you have already done the appropriate sanity checking.
 void BitWriter::_write_bit (bool value)
 {
-	U8 n = 7 - (curr_bit & 7);
+	U8 n = curr_bit & 7;
 
 	if (value)
 	{

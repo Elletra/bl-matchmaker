@@ -141,7 +141,7 @@ void BitReader::read_string (char buffer[256])
 inline U8 BitReader::_read_bit ()
 {
 	size_t byte = curr_bit >> 3;
-	U8 n = 7 - (curr_bit & 7);
+	U8 n = curr_bit & 7;
 
 	curr_bit++;
 

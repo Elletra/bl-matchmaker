@@ -1,6 +1,8 @@
 #ifndef _UTIL_H
 #define _UTIL_H
 
+#include <exception>
+
 #include "types.h"
 
 /* Endian conversion functions */
@@ -27,5 +29,15 @@ inline S32 to_le (S32 num)
 {
 	return (S32) to_le ((U32) num);
 }
+
+// -----------------------------------------------------------------------------
+
+struct Exception : public std::exception
+{
+	Exception (const char *what) : std::exception (what) {}
+};
+
+void AssertFatal (bool test, const char *error);
+void AssertWarn (bool test, const char *warn);
 
 #endif

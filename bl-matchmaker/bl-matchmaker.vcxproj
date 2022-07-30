@@ -19,13 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\bitReader\BitReader.cpp" />
-    <ClCompile Include="src\bitWriter\BitWriter.cpp" />
+    <ClCompile Include="src\bitStream\BitStream.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\bitReader\BitReader.h" />
-    <ClInclude Include="src\bitWriter\BitWriter.h" />
+    <ClInclude Include="src\bitStream\BitStream.h" />
     <ClInclude Include="src\types.h" />
     <ClInclude Include="src\util.h" />
   </ItemGroup>

@@ -53,28 +53,6 @@ private:
 	///
 	/// This method assumes you have already done the appropriate sanity checking.
 	inline U8 _read_bit ();
-
-	template<typename T>
-	bool _read (T &out_num)
-	{
-		size_t size = sizeof (T) * 8;
-
-		if (curr_bit + size > num_bits || data == nullptr)
-		{
-			return false;
-		}
-
-		T num = 0;
-
-		for (U32 i = 0; i < size; i++)
-		{
-			num = (num << 1) | _read_bit ();
-		}
-
-		out_num = num;
-
-		return true;
-	}
 };
 
 #endif

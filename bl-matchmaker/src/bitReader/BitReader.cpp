@@ -63,12 +63,12 @@ bool BitReader::read_bits (S32 bit_count, void *out_ptr)
 
 bool BitReader::read (U8 &out)
 {
-	return _read<U8> (out);
+	return read_bits (BITS_U8, &out);
 }
 
 bool BitReader::read (U16 &out)
 {
-	bool success = _read<U16> (out);
+	bool success = read_bits (BITS_U16, &out);
 
 	if (success)
 	{
@@ -80,7 +80,7 @@ bool BitReader::read (U16 &out)
 
 bool BitReader::read (U32 &out)
 {
-	bool success = _read<U32> (out);
+	bool success = read_bits (BITS_U32, &out);
 
 	if (success)
 	{
@@ -92,12 +92,12 @@ bool BitReader::read (U32 &out)
 
 bool BitReader::read (S8 &out)
 {
-	return _read<S8> (out);
+	return read_bits (BITS_S8, &out);
 }
 
 bool BitReader::read (S16 &out)
 {
-	bool success = _read<S16> (out);
+	bool success = read_bits (BITS_S16, &out);
 
 	if (success)
 	{
@@ -109,7 +109,7 @@ bool BitReader::read (S16 &out)
 
 bool BitReader::read (S32 &out)
 {
-	bool success = _read<S32> (out);
+	bool success = read_bits (BITS_S32, &out);
 
 	if (success)
 	{

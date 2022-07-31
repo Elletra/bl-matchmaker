@@ -24,6 +24,9 @@
     <ClCompile Include="src\util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\udpServer\UDPServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\types.h">
@@ -33,6 +36,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\bitStream\BitStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NetAddress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\udpServer\UDPServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\udpServer\handlers\matchmaker_ping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\udpServer\handlers\arranged_connect_request.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

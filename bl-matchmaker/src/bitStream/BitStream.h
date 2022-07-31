@@ -11,6 +11,9 @@
 #include "util.h"
 #include "types.h"
 
+#include "NetAddress.h"
+
+#define MAX_STR_LEN 256
 
 
 // This should ideally be done with templates...
@@ -57,7 +60,8 @@ protected:
 
 	friend class HuffmanProcessor;
 public:
-	enum Status {
+	enum class Status
+	{
 		Ok = 0,           ///< Ok!
 		IOError,          ///< Read or Write error
 		EOS,              ///< End of Stream reached (mostly for reads)
@@ -74,12 +78,14 @@ public:
 
 	// Overloaded write and read ops..
 public:
-	bool read (const U32 in_numBytes, void *out_pBuffer) {
-		return _read (in_numBytes, out_pBuffer);
-	}
-	bool write (const U32 in_numBytes, const void *in_pBuffer) {
-		return _write (in_numBytes, in_pBuffer);
-	}
+	bool read (const U32 in_numBytes, void *out_pBuffer) { return _read (in_numBytes, out_pBuffer); }
+	bool write (const U32 in_numBytes, const void *in_pBuffer) { return _write (in_numBytes, in_pBuffer); }
+
+	/// Write an address to the stream.
+	bool write (const NetAddress &);
+	/// Read an address from the stream.
+	bool read (NetAddress &addr);
+
 	DECLARE_OVERLOADED_WRITE (S8)
 	DECLARE_OVERLOADED_WRITE (U8)
 
@@ -140,8 +146,8 @@ public:
 	bool _read (const U32 size, void *d);
 	bool _write (const U32 size, const void *d);
 
-	void readString (char stringBuf[256]);
-	void writeString (const char *stringBuf, S32 maxLen = 255);
+	void readString (char stringBuf[MAX_STR_LEN]);
+	void writeString (const char *stringBuf, S32 maxLen = MAX_STR_LEN);
 
 	U32  getPosition () const;
 	bool setPosition (const U32 in_newPosition);

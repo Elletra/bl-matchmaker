@@ -21,11 +21,16 @@
   <ItemGroup>
     <ClCompile Include="src\bitStream\BitStream.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\udpServer\UDPServer.cpp" />
     <ClCompile Include="src\util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\bitStream\BitStream.h" />
+    <ClInclude Include="src\NetAddress.h" />
     <ClInclude Include="src\types.h" />
+    <ClInclude Include="src\udpServer\handlers\arranged_connect_request.h" />
+    <ClInclude Include="src\udpServer\handlers\matchmaker_ping.h" />
+    <ClInclude Include="src\udpServer\UDPServer.h" />
     <ClInclude Include="src\util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

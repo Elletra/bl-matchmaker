@@ -66,6 +66,26 @@ public:
 
 HuffmanProcessor HuffmanProcessor::g_huffProcessor;
 
+bool BitStream::write (const NetAddress &addr)
+{
+	return write (addr.type) &&
+		write (addr.ip[0]) &&
+		write (addr.ip[1]) &&
+		write (addr.ip[2]) &&
+		write (addr.ip[3]) &&
+		write (addr.port);
+}
+
+bool BitStream::read (NetAddress &addr)
+{
+	return read (&addr.type) &&
+		read (&addr.ip[0]) &&
+		read (&addr.ip[1]) &&
+		read (&addr.ip[2]) &&
+		read (&addr.ip[3]) &&
+		read (&addr.port);
+}
+
 void BitStream::setBuffer (void *bufPtr, S32 size, S32 maxSize)
 {
 	dataPtr = (U8 *) bufPtr;
@@ -277,7 +297,7 @@ static U32 gBitCounts[4] = {
 
 //------------------------------------------------------------------------------
 
-void BitStream::readString (char buf[256])
+void BitStream::readString (char buf[MAX_STR_LEN])
 {
 	if (stringBuffer)
 	{
@@ -479,8 +499,8 @@ bool HuffmanProcessor::writeHuffBuffer (BitStream *pStream, const char *out_pBuf
 		buildTables ();
 
 	S32 len = out_pBuffer ? strlen (out_pBuffer) : 0;
-	AssertWarn (len <= 255, "String TOO long for writeString");
-	AssertWarn (len <= 255, out_pBuffer);
+	AssertWarn (len < MAX_STR_LEN, "String TOO long for writeString");
+	AssertWarn (len < MAX_STR_LEN, out_pBuffer);
 	if (len > maxLen)
 		len = maxLen;
 

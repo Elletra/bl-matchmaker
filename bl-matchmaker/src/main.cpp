@@ -1,30 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include <conio.h>
 
-#include "bitReader/BitReader.h"
-#include "bitWriter/BitWriter.h"
+#include "udpServer/UDPServer.h"
+#include "udpServer/handlers/matchmaker_ping.h"
+#include "udpServer/handlers/arranged_connect_request.h"
 
 #include "types.h"
 
+#define PORT "5555"
+#define BUFFER_LEN 512
 #define DATA_SIZE 4
 
 int main (int argc, const char **argv)
 {
-	U8 data[DATA_SIZE] = { 0b11110001, 0b10110100, 0b10101010, 0b11111011 };
-	BitReader reader = BitReader (data, DATA_SIZE, false);
+	UDPServer server = UDPServer (NULL, PORT);
 
-	/*U8 bit = 0;
+	printf ("Starting matchmaker server...\n");
 
-	while (reader.get_curr_bit () < reader.get_num_bits ())
+	if (!server.start ())
 	{
-		reader.read_bit (bit);
-		printf ("%u%s", bit, (reader.get_curr_bit () & 7) ? "" : "\n");
-	}*/
+		printf ("Failed to start matchmaker server!\n");
+		return 1;
+	}
 
-	S8 num = 0;
-	reader.read (num);
+	server.add_handler (UDPServer::Packet::Type::MatchmakerPing, PacketHandlers::matchmaker_ping);
+	server.add_handler (UDPServer::Packet::Type::ArrangedConnectRequest, PacketHandlers::arranged_connect_request);
 
-	printf ("%d\n", num);
+	printf ("Matchmaker server listening on port %s\n", PORT);
+
+	while (server.receive ());
+
+	printf ("Matchmaker server shut down.\n");
 
 	return 0;
 }

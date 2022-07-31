@@ -71,6 +71,8 @@ bool UDPServer::start ()
 	freeaddrinfo (info);
 	info = NULL;
 
+	state = State::Running;
+
 	return true;
 }
 

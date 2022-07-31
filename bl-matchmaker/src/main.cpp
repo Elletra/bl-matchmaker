@@ -10,13 +10,12 @@
 
 #include "types.h"
 
-#define PORT "5555"
 #define BUFFER_LEN 512
 #define DATA_SIZE 4
 
 int main (int argc, const char **argv)
 {
-	UDPServer server = UDPServer (NULL, PORT);
+	UDPServer server = UDPServer ();
 
 	printf ("Starting matchmaker server...\n");
 
@@ -29,9 +28,9 @@ int main (int argc, const char **argv)
 	server.add_handler (UDPServer::Packet::Type::MatchmakerPing, PacketHandlers::matchmaker_ping);
 	server.add_handler (UDPServer::Packet::Type::ArrangedConnectRequest, PacketHandlers::arranged_connect_request);
 
-	printf ("Matchmaker server listening on port %s\n", PORT);
+	printf ("Matchmaker server listening on port %u\n", server.get_port ());
 
-	while (server.receive ());
+	while (server.is_running () && server.receive ());
 
 	printf ("Matchmaker server shut down.\n");
 

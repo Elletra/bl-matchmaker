@@ -97,6 +97,9 @@ public:
 	inline State get_state () const { return state; }
 	inline bool is_running () const { return state == State::Running; }
 
+	inline const char* get_hostname () const { return hostname; };
+	inline U16 get_port () const { return atoi (port); };
+
 	bool start ();
 	void stop ();
 

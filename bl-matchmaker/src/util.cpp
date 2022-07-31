@@ -7,7 +7,7 @@ void AssertFatal (bool test, const char *error)
 {
 	if (!test)
 	{
-		throw Exception (error);
+		throw AssertException (error);
 	}
 }
 

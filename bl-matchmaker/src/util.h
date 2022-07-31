@@ -32,9 +32,9 @@ inline S32 to_le (S32 num)
 
 // -----------------------------------------------------------------------------
 
-struct Exception : public std::exception
+struct AssertException : public std::exception
 {
-	Exception (const char *what) : std::exception (what) {}
+	AssertException (const char *what) : std::exception (what) {}
 };
 
 void AssertFatal (bool test, const char *error);

@@ -25,13 +25,130 @@
     <ClCompile Include="src\util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lib\libpq\libpq\libpq-events.h" />
+    <ClInclude Include="lib\libpq\libpq\libpq-fe.h" />
+    <ClInclude Include="lib\libpq\libpq\libpq-fs.h" />
+    <ClInclude Include="lib\libpq\libpq\pg_config_ext.h" />
+    <ClInclude Include="lib\libpq\libpq\postgres_ext.h" />
+    <ClInclude Include="lib\pqxx\pqxx\array.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\binarystring.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\blob.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\composite.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\config-internal-compiler.h" />
+    <ClInclude Include="lib\pqxx\pqxx\config-internal-libpq.h" />
+    <ClInclude Include="lib\pqxx\pqxx\config-public-compiler.h" />
+    <ClInclude Include="lib\pqxx\pqxx\connection.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\cursor.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\dbtransaction.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\errorhandler.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\except.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\field.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\array-composite.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\callgate.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\concat.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\conversions.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\encodings.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\encoding_group.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-errorhandler.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-largeobject.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-notification_receiver.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-pipeline.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-sql_cursor.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-stream_from.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-stream_to.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-transaction.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\errorhandler-connection.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\icursorstream-icursor_iterator.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\icursor_iterator-icursorstream.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-connection.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-creation.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-pipeline.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-sql_cursor.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\transaction-sql_cursor.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\transaction-transaction_focus.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\header-post.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\header-pre.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\ignore-deprecated-post.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\ignore-deprecated-pre.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\libpq-forward.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\result_iter.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\result_iterator.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\sql_cursor.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\statement_parameters.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\stream_iterator.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\internal\wait.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\isolation.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\largeobject.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\nontransaction.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\notification.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\params.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\pipeline.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\prepared_statement.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\range.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\result.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\robusttransaction.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\row.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\separated_list.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\strconv.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\stream_from.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\stream_to.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\subtransaction.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\time.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\transaction.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\transaction_base.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\transaction_focus.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\transactor.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\types.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\util.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\version.hxx" />
+    <ClInclude Include="lib\pqxx\pqxx\zview.hxx" />
     <ClInclude Include="src\bitStream\BitStream.h" />
+    <ClInclude Include="src\config.example.h" />
+    <ClInclude Include="src\config.h" />
     <ClInclude Include="src\NetAddress.h" />
     <ClInclude Include="src\types.h" />
     <ClInclude Include="src\udpServer\handlers\arranged_connect_request.h" />
     <ClInclude Include="src\udpServer\handlers\matchmaker_ping.h" />
     <ClInclude Include="src\udpServer\UDPServer.h" />
     <ClInclude Include="src\util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\pqxx\pqxx\array" />
+    <None Include="lib\pqxx\pqxx\binarystring" />
+    <None Include="lib\pqxx\pqxx\blob" />
+    <None Include="lib\pqxx\pqxx\composite" />
+    <None Include="lib\pqxx\pqxx\connection" />
+    <None Include="lib\pqxx\pqxx\cursor" />
+    <None Include="lib\pqxx\pqxx\dbtransaction" />
+    <None Include="lib\pqxx\pqxx\errorhandler" />
+    <None Include="lib\pqxx\pqxx\except" />
+    <None Include="lib\pqxx\pqxx\field" />
+    <None Include="lib\pqxx\pqxx\isolation" />
+    <None Include="lib\pqxx\pqxx\largeobject" />
+    <None Include="lib\pqxx\pqxx\nontransaction" />
+    <None Include="lib\pqxx\pqxx\notification" />
+    <None Include="lib\pqxx\pqxx\params" />
+    <None Include="lib\pqxx\pqxx\pipeline" />
+    <None Include="lib\pqxx\pqxx\pqxx" />
+    <None Include="lib\pqxx\pqxx\prepared_statement" />
+    <None Include="lib\pqxx\pqxx\range" />
+    <None Include="lib\pqxx\pqxx\result" />
+    <None Include="lib\pqxx\pqxx\robusttransaction" />
+    <None Include="lib\pqxx\pqxx\row" />
+    <None Include="lib\pqxx\pqxx\separated_list" />
+    <None Include="lib\pqxx\pqxx\strconv" />
+    <None Include="lib\pqxx\pqxx\stream_from" />
+    <None Include="lib\pqxx\pqxx\stream_to" />
+    <None Include="lib\pqxx\pqxx\subtransaction" />
+    <None Include="lib\pqxx\pqxx\time" />
+    <None Include="lib\pqxx\pqxx\transaction" />
+    <None Include="lib\pqxx\pqxx\transaction_base" />
+    <None Include="lib\pqxx\pqxx\transaction_focus" />
+    <None Include="lib\pqxx\pqxx\transactor" />
+    <None Include="lib\pqxx\pqxx\types" />
+    <None Include="lib\pqxx\pqxx\util" />
+    <None Include="lib\pqxx\pqxx\version" />
+    <None Include="lib\pqxx\pqxx\zview" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -113,12 +230,13 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\lib\libpq;$(ProjectDir)\lib\pqxx;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;libpq.lib;pqxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\lib\libpq\lib;$(ProjectDir)\lib\pqxx\lib\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,14 +249,15 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\lib\libpq;$(ProjectDir)\lib\pqxx;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;libpq.lib;pqxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\lib\libpq\lib;$(ProjectDir)\lib\pqxx\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -149,12 +268,13 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\lib\libpq;$(ProjectDir)\lib\pqxx;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;libpq.lib;pqxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\lib\libpq\lib;$(ProjectDir)\lib\pqxx\lib\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -167,14 +287,15 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\lib\libpq;$(ProjectDir)\lib\pqxx;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;libpq.lib;pqxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\lib\libpq\lib;$(ProjectDir)\lib\pqxx\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -50,5 +50,280 @@
     <ClInclude Include="src\udpServer\handlers\arranged_connect_request.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-errorhandler.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-largeobject.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-notification_receiver.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-pipeline.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-sql_cursor.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-stream_from.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-stream_to.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\connection-transaction.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\errorhandler-connection.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\icursor_iterator-icursorstream.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\icursorstream-icursor_iterator.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-connection.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-creation.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-pipeline.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\result-sql_cursor.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\transaction-sql_cursor.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\gates\transaction-transaction_focus.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\array-composite.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\callgate.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\concat.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\conversions.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\encoding_group.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\encodings.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\header-post.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\header-pre.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\ignore-deprecated-post.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\ignore-deprecated-pre.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\libpq-forward.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\result_iter.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\result_iterator.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\sql_cursor.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\statement_parameters.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\stream_iterator.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\internal\wait.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\array.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\binarystring.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\blob.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\composite.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\config-internal-compiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\config-internal-libpq.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\config-public-compiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\connection.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\cursor.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\dbtransaction.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\errorhandler.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\except.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\field.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\isolation.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\largeobject.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\nontransaction.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\notification.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\params.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\pipeline.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\prepared_statement.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\range.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\result.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\robusttransaction.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\row.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\separated_list.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\strconv.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\stream_from.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\stream_to.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\subtransaction.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\time.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\transaction.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\transaction_base.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\transaction_focus.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\transactor.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\types.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\util.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\version.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\pqxx\pqxx\zview.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config.example.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpq\libpq\libpq-events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpq\libpq\libpq-fe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpq\libpq\libpq-fs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpq\libpq\pg_config_ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpq\libpq\postgres_ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\pqxx\pqxx\zview" />
+    <None Include="lib\pqxx\pqxx\pqxx" />
+    <None Include="lib\pqxx\pqxx\prepared_statement" />
+    <None Include="lib\pqxx\pqxx\array" />
+    <None Include="lib\pqxx\pqxx\binarystring" />
+    <None Include="lib\pqxx\pqxx\blob" />
+    <None Include="lib\pqxx\pqxx\composite" />
+    <None Include="lib\pqxx\pqxx\connection" />
+    <None Include="lib\pqxx\pqxx\cursor" />
+    <None Include="lib\pqxx\pqxx\dbtransaction" />
+    <None Include="lib\pqxx\pqxx\errorhandler" />
+    <None Include="lib\pqxx\pqxx\except" />
+    <None Include="lib\pqxx\pqxx\field" />
+    <None Include="lib\pqxx\pqxx\isolation" />
+    <None Include="lib\pqxx\pqxx\largeobject" />
+    <None Include="lib\pqxx\pqxx\nontransaction" />
+    <None Include="lib\pqxx\pqxx\notification" />
+    <None Include="lib\pqxx\pqxx\params" />
+    <None Include="lib\pqxx\pqxx\pipeline" />
+    <None Include="lib\pqxx\pqxx\range" />
+    <None Include="lib\pqxx\pqxx\result" />
+    <None Include="lib\pqxx\pqxx\robusttransaction" />
+    <None Include="lib\pqxx\pqxx\row" />
+    <None Include="lib\pqxx\pqxx\separated_list" />
+    <None Include="lib\pqxx\pqxx\strconv" />
+    <None Include="lib\pqxx\pqxx\stream_from" />
+    <None Include="lib\pqxx\pqxx\stream_to" />
+    <None Include="lib\pqxx\pqxx\subtransaction" />
+    <None Include="lib\pqxx\pqxx\time" />
+    <None Include="lib\pqxx\pqxx\transaction" />
+    <None Include="lib\pqxx\pqxx\transaction_base" />
+    <None Include="lib\pqxx\pqxx\transaction_focus" />
+    <None Include="lib\pqxx\pqxx\transactor" />
+    <None Include="lib\pqxx\pqxx\types" />
+    <None Include="lib\pqxx\pqxx\util" />
+    <None Include="lib\pqxx\pqxx\version" />
   </ItemGroup>
 </Project>

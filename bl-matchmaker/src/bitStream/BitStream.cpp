@@ -24,9 +24,8 @@
 #include <memory>
 #include <vector>
 
+#include "udpServer/UDPServer.h"
 #include "BitStream.h"
-
-#define MAX_PACKET_DATA_SIZE 1500
 
 static BitStream gPacketStream (NULL, 0);
 static U8 gPacketBuffer[MAX_PACKET_DATA_SIZE];
@@ -314,7 +313,7 @@ static U32 gBitCounts[4] = {
 
 //------------------------------------------------------------------------------
 
-void BitStream::readString (char buf[MAX_STR_LEN])
+void BitStream::readString (char buf[STREAM_STR_BUF_SIZE])
 {
 	if (stringBuffer)
 	{
@@ -516,10 +515,13 @@ bool HuffmanProcessor::writeHuffBuffer (BitStream *pStream, const char *out_pBuf
 		buildTables ();
 
 	S32 len = out_pBuffer ? strlen (out_pBuffer) : 0;
-	AssertWarn (len < MAX_STR_LEN, "String TOO long for writeString");
-	AssertWarn (len < MAX_STR_LEN, out_pBuffer);
+	AssertWarn (len <= MAX_STREAM_STR_LEN, "String TOO long for writeString");
+	AssertWarn (len <= MAX_STREAM_STR_LEN, out_pBuffer);
 	if (len > maxLen)
 		len = maxLen;
+
+	if (len > MAX_STREAM_STR_LEN)
+		len = MAX_STREAM_STR_LEN;
 
 	S32 numBits = 0;
 	S32 i;

@@ -1,19 +1,27 @@
 #ifndef _UDPSERVER_UDPSERVER_H
 #define _UDPSERVER_UDPSERVER_H
 
+#include <exception>
 #include <map>
 #include <memory>
-#include <winsock2.h>
-#include <ws2tcpip.h>
+
+#include "database/DatabaseConnection.h"
+#include "platform/platform.h"
 
 #include "NetAddress.h"
 #include "types.h"
 
-#define BUFFER_LEN 512
+/* This is used by Torque/Blockland. **Do not** change this! */
+#define MAX_PACKET_DATA_SIZE 1500
 
 class UDPServer
 {
 public:
+	struct Exception : public std::exception
+	{
+		Exception (const char *what) : std::exception (what) {}
+	};
+
 	enum class State
 	{
 		Ready,
@@ -21,12 +29,15 @@ public:
 		Running,
 		Stopping,
 		Stopped,
-		Destroyed,
 	};
 
 	struct Packet
 	{
-		typedef void (*Handler) (const UDPServer &server, const Packet &packet);
+		typedef void (*Handler) (
+			const Packet &packet,
+			UDPServer &server,
+			DatabaseConnection::Ptr db_conn
+		);
 
 		// There are more than this, but we only care about these ones.
 		enum class Type
@@ -55,10 +66,16 @@ public:
 			}
 		}
 
-		static inline const char *type_name (Type type) { return type_name ((S32) type); }
+		static inline const char *type_name (Type type) {
+			return type_name ((S32) type);
+		}
 
-		static inline bool is_valid_type (S32 type) { return strcmp (type_name (type), ""); }
-		static inline bool is_valid_type (Type type) { return is_valid_type ((S32) type); }
+		static inline bool is_valid_type (S32 type) {
+			return strcmp (type_name (type), "");
+		}
+		static inline bool is_valid_type (Type type) {
+			return is_valid_type ((S32) type);
+		}
 
 		Type type;
 
@@ -69,11 +86,18 @@ public:
 		size_t num_bytes; // Packets don't usually use the entire buffer, so we need this.
 	};
 
+	struct Nonce
+	{
+		U32 data[2] = { 0, 0 };
+	};
+
 private:
 	State state = State::Ready;
 
 	struct addrinfo *info = NULL;
 	struct addrinfo hints;
+
+	DatabaseConnection::Ptr db_conn;
 
 	const char *hostname;
 	const char *port;
@@ -81,7 +105,7 @@ private:
 	SOCKET socket = NULL;
 	sockaddr_in client;
 
-	char buffer[BUFFER_LEN];
+	char buffer[MAX_PACKET_DATA_SIZE];
 
 	bool wsa_startup = false;
 
@@ -91,7 +115,7 @@ private:
 	HandlerMap handlers;
 
 public:
-	UDPServer (const char *hostname = NULL, const char *port = "5555");
+	UDPServer (DatabaseConnection::Ptr db_conn, const char *hostname = NULL, const char *port = "5555");
 	~UDPServer ();
 
 	inline State get_state () const { return state; }
@@ -104,6 +128,15 @@ public:
 	void stop ();
 
 	bool receive ();
+	bool send (const NetAddress &addr, char *data_buffer, size_t data_size);
+
+	bool send_arranged_request (
+		const NetAddress &addr,
+		std::vector<NetAddress> &addresses,
+		Nonce &nonce_a,
+		Nonce &nonce_b
+	);
+
 	void handle_packet (const Packet &packet);
 
 	bool add_handler (Packet::Type type, Packet::Handler handler);

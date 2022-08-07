@@ -1,8 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#include <conio.h>
+#include <iostream>
+#include <memory>
+#include <exception>
+#include <string>
+
+#include "database/DatabaseConnection.h"
 
 #include "udpServer/UDPServer.h"
 #include "udpServer/handlers/matchmaker_ping.h"
@@ -10,12 +12,24 @@
 
 #include "types.h"
 
-#define BUFFER_LEN 512
-#define DATA_SIZE 4
+#include "util/rng.h"
+#include "util/string_conversion.h"
+
+#include "config.h"
 
 int main (int argc, const char **argv)
 {
-	UDPServer server = UDPServer ();
+	RNG::init ();
+
+	auto db_conn = std::make_shared<DatabaseConnection> ();
+
+	if (!db_conn->open ())
+	{
+		printf ("Failed to connect to database!\n");
+		return 1;
+	}
+
+	UDPServer server = UDPServer (db_conn);
 
 	printf ("Starting matchmaker server...\n");
 

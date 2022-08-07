@@ -1,7 +1,5 @@
-#ifndef _UTIL_H
-#define _UTIL_H
-
-#include <exception>
+#ifndef _UTIL_ENDIAN_H
+#define _UTIL_ENDIAN_H
 
 #include "types.h"
 
@@ -29,15 +27,5 @@ inline S32 to_le (S32 num)
 {
 	return (S32) to_le ((U32) num);
 }
-
-// -----------------------------------------------------------------------------
-
-struct AssertException : public std::exception
-{
-	AssertException (const char *what) : std::exception (what) {}
-};
-
-void AssertFatal (bool test, const char *error);
-void AssertWarn (bool test, const char *warn);
 
 #endif

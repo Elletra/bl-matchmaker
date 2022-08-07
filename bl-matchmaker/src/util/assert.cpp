@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-#include "util.h"
-
+#include "assert.h"
 
 void AssertFatal (bool test, const char *error)
 {

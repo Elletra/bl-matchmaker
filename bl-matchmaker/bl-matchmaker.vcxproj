@@ -20,9 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bitStream\BitStream.cpp" />
+    <ClCompile Include="src\database\DatabaseConnection.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\udpServer\UDPServer.cpp" />
-    <ClCompile Include="src\util.cpp" />
+    <ClCompile Include="src\util\assert.cpp" />
+    <ClCompile Include="src\util\rng.cpp" />
+    <ClCompile Include="src\util\string_conversion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\libpq\libpq\libpq-events.h" />
@@ -105,12 +108,19 @@
     <ClInclude Include="src\bitStream\BitStream.h" />
     <ClInclude Include="src\config.example.h" />
     <ClInclude Include="src\config.h" />
+    <ClInclude Include="src\database\DatabaseConnection.h" />
     <ClInclude Include="src\NetAddress.h" />
+    <ClInclude Include="src\platform\linux\platform.h" />
+    <ClInclude Include="src\platform\platform.h" />
+    <ClInclude Include="src\platform\win32\platform.h" />
     <ClInclude Include="src\types.h" />
     <ClInclude Include="src\udpServer\handlers\arranged_connect_request.h" />
     <ClInclude Include="src\udpServer\handlers\matchmaker_ping.h" />
     <ClInclude Include="src\udpServer\UDPServer.h" />
-    <ClInclude Include="src\util.h" />
+    <ClInclude Include="src\util\assert.h" />
+    <ClInclude Include="src\util\endian.h" />
+    <ClInclude Include="src\util\rng.h" />
+    <ClInclude Include="src\util\string_conversion.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\pqxx\pqxx\array" />
@@ -247,7 +257,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)\lib\libpq;$(ProjectDir)\lib\pqxx;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -285,7 +295,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)\lib\libpq;$(ProjectDir)\lib\pqxx;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

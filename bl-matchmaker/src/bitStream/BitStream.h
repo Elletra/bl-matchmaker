@@ -25,12 +25,14 @@
 
 #include <exception>
 
-#include "util.h"
+#include "util/assert.h"
 #include "types.h"
 
 #include "NetAddress.h"
 
-#define MAX_STR_LEN 256
+/* This is used by Torque/Blockland. **Do not** change this! */
+#define MAX_STREAM_STR_LEN 255
+#define STREAM_STR_BUF_SIZE (MAX_STREAM_STR_LEN + 1)
 
 
 // This should ideally be done with templates...
@@ -163,8 +165,8 @@ public:
 	bool _read (const U32 size, void *d);
 	bool _write (const U32 size, const void *d);
 
-	void readString (char stringBuf[MAX_STR_LEN]);
-	void writeString (const char *stringBuf, S32 maxLen = MAX_STR_LEN);
+	void readString (char stringBuf[STREAM_STR_BUF_SIZE]);
+	void writeString (const char *stringBuf, S32 maxLen = STREAM_STR_BUF_SIZE);
 
 	U32  getPosition () const;
 	bool setPosition (const U32 in_newPosition);

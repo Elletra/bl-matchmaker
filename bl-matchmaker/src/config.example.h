@@ -19,15 +19,20 @@
 #define SERVER_HOST "localhost"
 #define SERVER_PORT "5555"
 
+/* The version and revision we're targetting.
+   If it's pre-v21, set BL_REVISION to -1. */
+#define BL_VERSION 21
+#define BL_REVISION 2033
+
+/* Secret that varies from version-to-version. */
+#define BL_SECRET 257752152
+
 /**
  * Config for PostgreSQL database
  */
 
 /* Database protocol */
 #define DB_PROTOCOL "postgres://"
-
-/* Database name */
-#define DB_NAME "blmatchmaker"
 
 /* Database user credentials */
 #define DB_USER "blmatchmaker"
@@ -38,6 +43,9 @@
 #define DB_HOST "localhost"
 #define DB_PORT "5432"
 #define DB_HOST_PORT DB_HOST ":" DB_PORT
+
+/* Database name */
+#define DB_NAME "blmatchmaker"
 
 /* Database parameters, if any */
 #define DB_PARAMS ""

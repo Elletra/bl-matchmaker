@@ -1,11 +1,20 @@
 #include <stdio.h>
 
+#include "bitStream/BitStream.h"
+#include "config.h"
+
 #include "UDPServer.h"
 
-UDPServer::UDPServer (const char *hostname, const char *port)
-	: hostname (hostname),
+UDPServer::UDPServer (DatabaseConnection::Ptr db_conn, const char *hostname, const char *port)
+	: db_conn (db_conn),
+	hostname (hostname),
 	port (port)
 {
+	if (!db_conn->is_open () && !db_conn->open ())
+	{
+		throw Exception ("UDPServer() - `db_conn` is closed and could not be re-opened");
+	}
+
 	memset (&hints, 0, sizeof (hints));
 	memset (&client, 0, sizeof (client));
 }
@@ -13,7 +22,6 @@ UDPServer::UDPServer (const char *hostname, const char *port)
 UDPServer::~UDPServer ()
 {
 	stop ();
-	state = State::Destroyed;
 }
 
 bool UDPServer::start ()
@@ -54,7 +62,7 @@ bool UDPServer::start ()
 
 	if (socket == INVALID_SOCKET)
 	{
-		printf ("Error creating socket: %ld\n", WSAGetLastError ());
+		printf ("Error creating socket: %d\n", WSAGetLastError ());
 		stop ();
 		return false;
 	}
@@ -63,7 +71,7 @@ bool UDPServer::start ()
 
 	if (result == SOCKET_ERROR)
 	{
-		printf ("Error binding socket: %ld\n", WSAGetLastError ());
+		printf ("Error binding socket: %d\n", WSAGetLastError ());
 		stop ();
 		return false;
 	}
@@ -163,7 +171,7 @@ void UDPServer::clear_all_handlers ()
 bool UDPServer::receive ()
 {
 	int client_size = sizeof (client);
-	int result = recvfrom (socket, buffer, BUFFER_LEN, 0, (sockaddr *) &client, &client_size);
+	int result = recvfrom (socket, buffer, MAX_PACKET_DATA_SIZE, 0, (sockaddr *) &client, &client_size);
 
 	if (result == SOCKET_ERROR)
 	{
@@ -181,7 +189,7 @@ bool UDPServer::receive ()
 			.type = (Packet::Type) buffer[0],
 			.address = address,
 			.buffer = buffer,
-			.buffer_size = BUFFER_LEN,
+			.buffer_size = MAX_PACKET_DATA_SIZE,
 			.num_bytes = (size_t) result,
 		};
 
@@ -189,6 +197,74 @@ bool UDPServer::receive ()
 	}
 
 	return true;
+}
+
+bool UDPServer::send (const NetAddress &addr, char *data_buffer, size_t data_size)
+{
+	if (state != State::Running)
+	{
+		printf ("Error: Cannot send data packet - server is not running!\n");
+		return false;
+	}
+
+	if (data_size > MAX_PACKET_DATA_SIZE)
+	{
+		printf ("Error: Cannot send a data packet larger than %u\n", MAX_PACKET_DATA_SIZE);
+		return false;
+	}
+
+	addr.to_sockaddr_in (client);
+
+	auto result = sendto (socket, data_buffer, data_size, 0, (sockaddr *) &client, sizeof (client));
+
+	if (result == SOCKET_ERROR)
+	{
+		printf ("Failed to send data packet: %d\n", WSAGetLastError ());
+		return false;
+	}
+
+	if (result != data_size)
+	{
+		printf ("Number of bytes sent does not match data size - possible corruption occurred!\n");
+		return false;
+	}
+
+	return true;
+}
+
+bool UDPServer::send_arranged_request (
+	const NetAddress &addr,
+	std::vector<NetAddress> &addresses,
+	Nonce &nonce_a,
+	Nonce &nonce_b
+)
+{
+	char buffer[MAX_PACKET_DATA_SIZE];
+	BitStream stream (buffer, MAX_PACKET_DATA_SIZE, MAX_PACKET_DATA_SIZE);
+
+	stream.write ((U8) Packet::Type::ArrangedConnectNotify);
+	stream.write (BL_SECRET);
+
+	stream.write (nonce_a.data[0]);
+	stream.write (nonce_a.data[1]);
+
+	stream.write (nonce_b.data[0]);
+	stream.write (nonce_b.data[1]);
+
+	/* NOTE: This is the `spamConnect` field. I don't know how he calculates this
+	   or what its purpose truly is. For now, I'm just having it be false. */
+	stream.writeFlag (false);
+
+	stream.write ((U8) addresses.size ());
+
+	for (U32 i = 0; i < addresses.size (); i++)
+	{
+		stream.write (addresses[i]);
+	}
+
+	printf ("Data size: %u\n", stream.getPosition ());
+
+	return send (addr, buffer, stream.getPosition ());
 }
 
 void UDPServer::handle_packet (const Packet &packet)
@@ -202,6 +278,6 @@ void UDPServer::handle_packet (const Packet &packet)
 
 	for (HandlerMap::iterator itr = itr_pair.first; itr != itr_pair.second; itr++)
 	{
-		itr->second (*this, packet);
+		itr->second (packet, *this, db_conn);
 	}
 }
